@@ -1,0 +1,220 @@
+.landing-1 {
+  border-radius: 40px;
+  height: 100vh;
+}
+.landing-1 .landing-image {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  border-radius: 40px;
+}
+.landing-1 .landing-inner {
+  position: relative;
+  top: 150px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.landing-1 .landing-inner P {
+  font-size: 20px;
+}
+.landing-1 .landing-inner .logo-container {
+  display: flex;
+  flex-direction: row;
+}
+.landing-1 .landing-inner .logo-container img {
+  height: 160px;
+  width: 250px;
+  margin-top: 17%;
+  margin-left: -17%;
+}
+.landing-1 .landing-inner .logo-container p {
+  margin-top: 30%;
+  font-size: 70px;
+}
+.landing-1 .landing-inner .bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 10%;
+  width: 100%;
+}
+.landing-1 .landing-inner .bottom [class^=container-] {
+  border: 1px solid rgba(71, 71, 71, 0.496);
+  background-color: rgba(0, 0, 0, 0.221);
+  -webkit-backdrop-filter: blur(1px);
+          backdrop-filter: blur(1px);
+  display: flex;
+  flex-direction: column;
+  width: 23%;
+  padding: 35px 0;
+  border-radius: 10px;
+}
+.landing-1 .landing-inner .bottom [class^=container-] a {
+  text-decoration: none;
+  color: var(--body);
+  left: 30%;
+  font-size: 20px;
+  position: relative;
+}
+.landing-1 .landing-inner .bottom [class^=container-] a:after {
+  position: absolute;
+  content: " ";
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: white;
+  transition: 0.2s ease-in;
+  bottom: -3px;
+}
+.landing-1 .landing-inner .bottom [class^=container-] a:hover:after {
+  width: 100%;
+}
+.landing-1 .landing-inner .bottom [class^=container-] small {
+  padding: 0 0 2% 30%;
+  font-size: 11px;
+}
+
+.landing-2 {
+  height: 520px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 20px;
+  padding: 100px 0 0 0;
+}
+.landing-2 .feature-txt {
+  font-size: 25px;
+}
+.landing-2 .containers {
+  display: flex;
+  flex-direction: row;
+  gap: 70px;
+  padding: 50px 0 0 0;
+}
+.landing-2 .containers [class^=container-] {
+  border: 1px solid rgba(56, 56, 56, 0.51);
+  width: 230px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  padding: 20px 10px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.342);
+  transition: transform 0.3s ease-in-out;
+}
+.landing-2 .containers [class^=container-] .f1-content {
+  border-bottom: 1px solid rgba(108, 108, 108, 0.585);
+  padding: 0 0 5px 0;
+}
+.landing-2 .containers [class^=container-] .f2-content {
+  margin-top: 10px;
+  line-height: 1.5;
+  font-size: 13.5px;
+  transition: transform 0.3s ease-in-out;
+}
+.landing-2 .containers [class^=container-] .f2-content:hover {
+  transform: scale(1.05) !important;
+}
+.landing-2 .containers [class^=container-]:hover {
+  transform: scale(1.2) !important;
+}
+
+.landing-3 {
+  height: 500px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.landing-3 .working-txt {
+  margin-top: 50px;
+  font-size: 25px;
+}
+.landing-3 .containers {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 70px;
+}
+.landing-3 .containers .left {
+  width: 53%;
+  height: 65%;
+  border: 1px solid rgba(65, 65, 65, 0.57);
+  display: flex;
+  flex-direction: column;
+  margin-left: 8%;
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.311);
+  border-radius: 10px;
+}
+.landing-3 .containers .left p {
+  line-height: 3;
+  font-size: 18px;
+}
+.landing-3 .containers .right {
+  width: 47%;
+}
+.landing-3 .containers .right img {
+  height: 20vw;
+  width: 20vw;
+  margin-left: 100px;
+}
+
+.landing-4 {
+  position: relative;
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.landing-4 .whocan-txt {
+  font-size: 25px;
+  margin-top: 50px;
+}
+.landing-4 .containers {
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+  padding: 70px 0 0 0;
+}
+.landing-4 .containers [class^=container-] {
+  border: 1px solid rgba(56, 56, 56, 0.51);
+  width: 300px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  padding: 20px 10px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.342);
+  transition: transform 0.3s ease-in-out;
+}
+.landing-4 .containers [class^=container-] .f1-content {
+  border-bottom: 1px solid rgba(108, 108, 108, 0.585);
+  padding: 0 0 5px 0;
+}
+.landing-4 .containers [class^=container-] .f2-content {
+  margin-top: 10px;
+  line-height: 1.5;
+  font-size: 15px;
+  transition: transform 0.3s ease-in-out;
+}
+.landing-4 .containers [class^=container-] .f2-content:hover {
+  transform: scale(1.05) !important;
+}
+.landing-4 .containers [class^=container-]:hover {
+  transform: scale(1.2) !important;
+}/*# sourceMappingURL=home.css.map */

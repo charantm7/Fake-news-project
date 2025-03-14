@@ -1,0 +1,322 @@
+:root {
+  --white: white;
+  --lwhite: #dddddddb;
+  --llwhite: #a9a9a9a2;
+  --black: black;
+  --green: green;
+  --body1: #161619;
+  --bodyh: #232426;
+  --border: #212327;
+  --side-bar-bg-hover: #d3d1d114;
+}
+
+.main {
+  border-top: 1px solid var(--border);
+}
+.main .bg-image img {
+  height: 100vh;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  position: fixed;
+}
+.main #login-form {
+  flex-direction: row;
+  display: none;
+  min-height: 82vh;
+  position: relative;
+  padding: 5% 0 4% 0;
+}
+.main #login-form .body-left {
+  width: 50%;
+  padding: 5% 0 0 15%;
+}
+.main #login-form .body-left .login-container {
+  padding: 10% 10%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.467);
+  border: 1px solid rgba(91, 91, 91, 0.442);
+  border-radius: 10px;
+  width: 55%;
+  gap: 30px;
+}
+.main #login-form .body-left .login-container .login-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+.main #login-form .body-left .login-container .login-top img {
+  height: 45px;
+  width: 65px;
+}
+.main #login-form .body-left .login-container .login-top p {
+  font-size: 1.5vw;
+  margin-top: 15px;
+}
+.main #login-form .body-left .login-container .login-mid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+}
+.main #login-form .body-left .login-container .login-mid .user {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid var(--llwhite);
+  height: 35px;
+}
+.main #login-form .body-left .login-container .login-mid .user input {
+  width: 100%;
+  outline: none;
+  padding: 0 60px 0 0;
+  background-color: transparent;
+  border: none;
+  color: var(--lwhite);
+  font-size: 15px;
+}
+.main #login-form .body-left .login-container .login-mid .user i {
+  padding: 10px;
+  color: white;
+  font-size: 19px;
+}
+.main #login-form .body-left .login-container .login-mid .input {
+  display: flex;
+  flex-direction: row;
+  height: 35px;
+  border-bottom: 1px solid var(--llwhite);
+}
+.main #login-form .body-left .login-container .login-mid .input #password {
+  width: 100%;
+  outline: none;
+  padding: 0 30px 0 0;
+  background-color: transparent;
+  border: none;
+  color: var(--lwhite);
+  font-size: 15px;
+}
+.main #login-form .body-left .login-container .login-mid .input #hide-password,
+.main #login-form .body-left .login-container .login-mid .input #show-password {
+  padding: 10px;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+}
+.main #login-form .body-left .login-container .login-mid label {
+  font-size: 18px;
+  margin-top: 30px;
+}
+.main #login-form .body-left .login-container .login-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+.main #login-form .body-left .login-container .login-bottom p a {
+  text-decoration: none;
+}
+.main #login-form .body-left .login-container .login-bottom p a:hover {
+  text-decoration: underline;
+}
+.main #login-form .body-left .login-container .login-bottom button {
+  width: 50%;
+  height: 35px;
+  cursor: pointer;
+  border-radius: 20px;
+  border: none;
+  background-color: var(--lwhite);
+}
+.main #login-form .body-left .login-container .login-bottom button:hover {
+  background-color: var(--llwhite);
+}
+.main #login-form .body-right {
+  width: 50%;
+}
+.main #login-form .body-right .r-top {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10% 0 0 0;
+  font-size: 1.5vw;
+}
+.main #login-form .body-right .main-l {
+  font-size: 2.4vw;
+  border-bottom: 1px solid white;
+  width: 19%;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+.main #login-form.open,
+.main #signup-form.open {
+  display: flex;
+  position: relative;
+}
+.main #signup-form {
+  display: none;
+  min-height: 82vh;
+  flex-direction: row;
+  padding: 7% 0 4% 0;
+}
+.main #signup-form .body-left {
+  width: 50%;
+  padding: 0 0 0 5%;
+  margin-left: 30px;
+}
+.main #signup-form .body-left .r-top {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10% 0 0 0;
+  font-size: 1.5vw;
+}
+.main #signup-form .body-left .main-l {
+  font-size: 2.4vw;
+  border-bottom: 1px solid white;
+  width: 35%;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+.main #signup-form .body-right {
+  width: 50%;
+  padding: 0 20% 0 5%;
+}
+.main #signup-form .body-right .signup-container {
+  width: 80%;
+  background-color: rgba(0, 0, 0, 0.467);
+  border: 1px solid rgba(91, 91, 91, 0.442);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 7% 15%;
+  margin-left: 20px;
+  border-radius: 10px;
+}
+.main #signup-form .body-right .signup-container .signup-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+.main #signup-form .body-right .signup-container .signup-top img {
+  height: 45px;
+  width: 65px;
+}
+.main #signup-form .body-right .signup-container .signup-top p {
+  font-size: 1.5vw;
+  margin-top: 15px;
+}
+.main #signup-form .body-right .signup-container .signup-mid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+}
+.main #signup-form .body-right .signup-container .signup-mid .email {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid var(--llwhite);
+  height: 35px;
+}
+.main #signup-form .body-right .signup-container .signup-mid .email input {
+  width: 100%;
+  outline: none;
+  padding: 0 60px 0 0;
+  background-color: transparent;
+  border: none;
+  color: var(--lwhite);
+  font-size: 15px;
+}
+.main #signup-form .body-right .signup-container .signup-mid .email i {
+  padding: 10px;
+  color: white;
+  font-size: 19px;
+}
+.main #signup-form .body-right .signup-container .signup-mid .user {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid var(--llwhite);
+  height: 35px;
+}
+.main #signup-form .body-right .signup-container .signup-mid .user input {
+  width: 100%;
+  outline: none;
+  padding: 0 60px 0 0;
+  background-color: transparent;
+  border: none;
+  color: var(--lwhite);
+  font-size: 15px;
+}
+.main #signup-form .body-right .signup-container .signup-mid .user i {
+  padding: 10px;
+  color: white;
+  font-size: 19px;
+}
+.main #signup-form .body-right .signup-container .signup-mid .input {
+  display: flex;
+  flex-direction: row;
+  height: 35px;
+  border-bottom: 1px solid var(--llwhite);
+}
+.main #signup-form .body-right .signup-container .signup-mid .input #password-s {
+  width: 100%;
+  outline: none;
+  padding: 0 30px 0 0;
+  background-color: transparent;
+  border: none;
+  color: var(--lwhite);
+  font-size: 15px;
+}
+.main #signup-form .body-right .signup-container .signup-mid .input #hide-password-s,
+.main #signup-form .body-right .signup-container .signup-mid .input #show-password-s {
+  padding: 10px;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+}
+.main #signup-form .body-right .signup-container .signup-mid .input #confirm_password {
+  width: 100%;
+  outline: none;
+  padding: 0 30px 0 0;
+  background-color: transparent;
+  border: none;
+  color: var(--lwhite);
+  font-size: 15px;
+}
+.main #signup-form .body-right .signup-container .signup-mid .input #hide-confirm_password,
+.main #signup-form .body-right .signup-container .signup-mid .input #show-confirm_password {
+  padding: 10px;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+}
+.main #signup-form .body-right .signup-container .signup-mid label {
+  font-size: 18px;
+  margin-top: 25px;
+}
+.main #signup-form .body-right .signup-container .signup-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+.main #signup-form .body-right .signup-container .signup-bottom p a {
+  text-decoration: none;
+}
+.main #signup-form .body-right .signup-container .signup-bottom p a:hover {
+  text-decoration: underline;
+}
+.main #signup-form .body-right .signup-container .signup-bottom button {
+  width: 60%;
+  height: 35px;
+  cursor: pointer;
+  border-radius: 20px;
+  border: none;
+  background-color: var(--lwhite);
+}
+.main #signup-form .body-right .signup-container .signup-bottom button:hover {
+  background-color: var(--llwhite);
+}/*# sourceMappingURL=auth.css.map */

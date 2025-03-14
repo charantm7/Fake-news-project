@@ -1,0 +1,114 @@
+{% extends 'landing/base.html' %} {% load static %}{% block link %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}" />
+{% endblock %} {% block main %}
+<div class="main">
+  <div class="bg-image">
+    <img class="landing-image" src="{% static 'assets/main1-bg.png'%}" alt="..." />
+  </div>
+  <form action="{% url 'User-Login' %}" id="login-form" method="post">
+    {% csrf_token %}
+    <div class="body-left">
+      <div class="login-container">
+        <div class="login-top">
+          <img src="{% static 'assets/logo-main.png'%}" alt="..." />
+          <p class="vorex orbitron">Trap Intel</p>
+        </div>
+        <div class="login-mid">
+          <label for="uname" class="quicksand">Username</label>
+          <div class="user">
+            <input type="text" name="username" for="uname" id="username" placeholder="@trapintel" required />
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <label for="passowrd" class="quicksand">Password</label>
+          <div class="input">
+            <input type="password" name="password" for="passowrd" id="password" required />
+            <i class="fa-solid fa-eye-slash" id="hide-password" onclick="togglePassword('password')"></i>
+            <i
+              class="fa-solid fa-eye"
+              id="show-password"
+              onclick="togglePassword('password')"
+              style="display: none"
+            ></i>
+          </div>
+        </div>
+        <div class="login-bottom quicksand">
+          <p>Don't have an account! <a href="#" id="signup">Sign up</a></p>
+          <button type="submit" class="roboto-mono">Login</button>
+        </div>
+      </div>
+    </div>
+    <div class="body-right">
+      <div class="r-top">
+        <p class="main-l silkscreen-regular">Login</p>
+        <p class="roboto-mono">Welcome Back,</p>
+        <p class="roboto-mono">Let's pick up where you left off!</p>
+      </div>
+    </div>
+  </form>
+  <form action="{% url 'User-Register' %}" id="signup-form" method="post">
+    {% csrf_token %}
+    <div class="body-left">
+      <div class="r-top">
+        <p class="main-l silkscreen-regular">Sign Up</p>
+        <p class="roboto-mono">Welcome Abroad,</p>
+        <p class="roboto-mono">Let's get you signed up & get started with vorex</p>
+      </div>
+    </div>
+    <div class="body-right">
+      <div class="signup-container">
+        <div class="signup-top">
+          <img src="{% static 'assets/logo-main.png'%}" alt="..." />
+          <p class="vorex orbitron">Trap Intel</p>
+        </div>
+        <div class="signup-mid">
+          <label for="uname" class="quicksand">Username</label>
+          <div class="user">
+            <input type="text" for="uname" placeholder="@trapintel" name="username" id="username" required />
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <label for="email" class="quicksand">Email</label>
+          <div class="email">
+            <input type="text" name="email" id="email" placeholder="e.g  trap@gmail.com" required />
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <label for="passowrd" class="quicksand">Password</label>
+          <div class="input">
+            <input type="password" name="password" for="password" id="password-s" required />
+            <i class="fa-solid fa-eye-slash" id="hide-password-s" onclick="togglePassword('password-s')"></i>
+            <i
+              class="fa-solid fa-eye"
+              id="show-password-s"
+              onclick="togglePassword('password-s')"
+              style="display: none"
+            ></i>
+          </div>
+          <label for="cpassowrd" class="quicksand">Confirm Password</label>
+          <div class="input">
+            <input type="password" name="confirm_password" for="cpassword" id="confirm_password" required />
+            <i
+              class="fa-solid fa-eye-slash"
+              id="hide-confirm_password"
+              onclick="togglePassword('confirm_password')"
+            ></i>
+            <i
+              class="fa-solid fa-eye"
+              id="show-confirm_password"
+              onclick="togglePassword('confirm_password')"
+              style="display: none"
+            ></i>
+          </div>
+        </div>
+        <div class="signup-bottom">
+          <p class="quicksand">
+            Already have an account!
+            <a href="#" id="login" title="login">Login</a>
+          </p>
+          <button type="submit" class="roboto-mono">Sign up</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %} {% block script %}
+<script src="{% static 'js/auth.js' %}"></script>
+{% endblock %}

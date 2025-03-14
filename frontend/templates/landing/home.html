@@ -1,0 +1,119 @@
+{% extends "landing/base.html" %} {% load static %} {% block link %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %} {% block main %}
+<div class="landing-1">
+  <img class="landing-image" src="{% static 'assets/main1-bg.png'%}" alt="..." />
+  <div class="landing-inner">
+    <p class="vt323-regular">🔥 AI-Powered Reverse Phishing Simulator</p>
+    <div class="logo-container">
+      <img src="{% static 'assets/logo-main.png'%}" alt="" />
+      <p class="orbitron">Trap Intel</p>
+    </div>
+    <div class="bottom">
+      {% if not user.is_authenticated %}
+      <div class="container-1">
+        <small class="open-sans">Authentication</small>
+        <a class="roboto-mono" style="width: 38%" href="{% url 'Auth' %}?action=signup">Get started</a>
+      </div>
+      {% elif user.is_authenticated %}
+      <div class="container-1">
+        <small class="open-sans">{{user.username}}</small>
+        <a class="roboto-mono" style="width: 27%" href="#">Dashboard</a>
+      </div>
+      {% endif %}
+
+      <div class="container-2">
+        <small class="open-sans">Secure</small>
+        <a class="roboto-mono" href="#" style="width: 35%">Learn more</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="landing-2">
+  <p class="silkscreen-regular feature-txt">🛠️ Key Features</p>
+  <div class="containers">
+    <div class="container-1" data-tilt data-tilt-max="0" data-tilt-glare="true" data-tilt-max-glare=".2">
+      <p class="open-sans f1-content">🔍 Real-Time Phishing Simulation</p>
+      <p class="quicksand f2-content">
+        AI-generated phishing scenarios mimic real-world cyber threats by creating personalized, adaptive
+        phishing attacks.
+      </p>
+      <p class="quicksand f2-content">
+        The system dynamically crafts fake emails, messages, and login pages based on user behavior, making
+        the simulations more realistic and challenging.
+      </p>
+    </div>
+    <div class="container-2" data-tilt data-tilt-max="0" data-tilt-glare="true" data-tilt-max-glare=".2">
+      <p class="open-sans f1-content">🧠 AI-Powered Phishing Detection</p>
+      <p class="quicksand f2-content">
+        Machine learning models create highly adaptive phishing attempts for training.
+      </p>
+      <p class="quicksand f2-content">
+        Traditional phishing detection relies on predefined rules, but AI-powered phishing detection takes it
+        a step further by using machine learning models to analyze, generate, and counter phishing threats in
+        real time.
+      </p>
+    </div>
+    <div class="container-3" data-tilt data-tilt-max="0" data-tilt-glare="true" data-tilt-max-glare=".2">
+      <p class="open-sans f1-content">🛡️ Blockchain Logging Security</p>
+      <p class="quicksand f2-content">
+        Every phishing attempt is recorded securely, ensuring data integrity.
+      </p>
+      <p class="quicksand f2-content">
+        Traditional logging systems can be tampered with, deleted, or manipulated. Blockchain-based logging
+        ensures that every phishing attempt is securely recorded, immutable, and transparent.
+      </p>
+    </div>
+    <div class="container-4" data-tilt data-tilt-max="0" data-tilt-glare="true" data-tilt-max-glare=".2">
+      <p class="open-sans f1-content">📊 Personalized Reports & Analytics</p>
+      <p class="quicksand f2-content">
+        A powerful dashboard-driven analytics system that helps users track their phishing awareness progress,
+        identify weaknesses, and improve cybersecurity habits.
+      </p>
+      <p class="quicksand f2-content">
+        Track your phishing test results, monitor improvements, and strengthen security awareness.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="landing-3">
+  <p class="working-txt silkscreen-regular">💡 How It Works</p>
+  <div class="containers">
+    <div class="left quicksand">
+      <p>1️⃣ Sign Up & Log In – Create an account to start your phishing awareness journey.</p>
+      <p>2️⃣ Receive Phishing Challenges – Get simulated phishing attacks in your dashboard.</p>
+      <p>3️⃣ Respond & Learn – Identify threats and improve your security awareness.</p>
+      <p>4️⃣ View Reports & Improve – Track your responses and prevent real-world attacks.</p>
+    </div>
+    <div class="right">
+      <img src="{% static 'assets/malware.png' %}" alt="..." />
+    </div>
+  </div>
+</div>
+<div class="landing-4">
+  <p class="silkscreen-regular whocan-txt">📣 Who Can Use This?</p>
+  <div class="containers">
+    <div class="container-1" data-tilt data-tilt-max="0" data-tilt-glare="true" data-tilt-max-glare=".2">
+      <p class="open-sans f1-content">🏢 Organizations</p>
+      <p class="quicksand f2-content">
+        Companies can use Trap Intel to train employees against phishing attacks and improve security
+        awareness.
+      </p>
+    </div>
+    <div class="container-2" data-tilt data-tilt-max="0" data-tilt-glare="true" data-tilt-max-glare=".2">
+      <p class="open-sans f1-content">👨‍💼 Individuals</p>
+      <p class="quicksand f2-content">
+        Individuals can use Trap Intel to learn about phishing attacks and improve their security awareness.
+      </p>
+    </div>
+    <div class="container-3" data-tilt data-tilt-max="0" data-tilt-glare="true" data-tilt-max-glare=".2">
+      <p class="open-sans f1-content">🚀 Cybersecurity Enthusiasts</p>
+      <p class="quicksand f2-content">
+        Test and analyze phishing strategies. Building detectio strategies of phishing attacks.
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block script %}
+<script type="text/javascript" src="{% static 'js/home.js' %}"></script>
+{% endblock %}
