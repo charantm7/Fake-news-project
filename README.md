@@ -16,15 +16,15 @@
 
 🔹 Chat Application (FastAPI Backend + WebSockets)
 
-    - Real-time messaging similar to WhatsApp
+- Real-time messaging similar to WhatsApp
 
-    - Fake news detection with confidence level analysis
+- Fake news detection with confidence level analysis
 
-    - Warning messages for detected fake news
+- Warning messages for detected fake news
 
-    - Users can query AI for more information on flagged messages
+- Users can query AI for more information on flagged messages
 
-    - Users can ask AI to verify doubtful messages
+- Users can ask AI to verify doubtful messages
 
 🔹 Analytics Dashboard (Django Backend)
 
@@ -39,22 +39,30 @@
 ## 🏗️ Project Structure
 
 - Fake-news-project/
+- |── ai_model/
+- | ├── inference.py
+- | ├── model.py
 - │── backend/ (Django Backend for Landing Page & Dashboard)
 - │ ├── manage.py
-- │ ├── db.sqlite3 (or PostgreSQL)
-- │ ├── backend/
+- │ ├── authentication
+- | ├── dashboard
+- │ ├── core/
 - │ │ ├── settings.py
 - │ │ ├── urls.py
 - │ │ ├── wsgi.py
-- │ ├── apps/
-- │ │ ├── authentication/
-- │ │ ├── dashboard/
-- │── chat-backend/ (FastAPI Backend for Chat & WebSockets)
+- │── chat_app/ (FastAPI Backend for Chat & WebSockets)
 - │ ├── main.py
 - │ ├── models.py
-- │ ├── database.py
+- │ ├── websocket.py
 - │── frontend/ (Frontend UI for Chat & Landing Page)
-- │ ├── index.html
-- │ ├── chat.html
+- | ├── templates/
+- | | ├── templates/
+- | | | ├── landing/
+- | | | | ├── index.html
+- | | | ├── chat/
+- | | | ├── dashboard/
 - │ ├── static/
+- │ | ├── css/
+- | | ├── js/
+- │ | ├── assets/
 - │── README.md
