@@ -6,15 +6,15 @@
 
 ## 🚀 Features
 
-🔹 Landing Page (Django Backend)
+### 🔹 Landing Page (Django Backend)
 
-    - User Authentication (Login & Signup)
+- User Authentication (Login & Signup)
 
-    - About Section
+- About Section
 
-    - Project Information
+- Project Information
 
-🔹 Chat Application (FastAPI Backend + WebSockets)
+### 🔹 Chat Application (FastAPI Backend + WebSockets)
 
 - Real-time messaging similar to WhatsApp
 
@@ -26,16 +26,53 @@
 
 - Users can ask AI to verify doubtful messages
 
-🔹 Analytics Dashboard (Django Backend)
+### 🔹 Analytics Dashboard (Django Backend)
 
-    - Total messages analyzed
+- Total messages analyzed
 
-    - Fake vs. real message statistics
+- Fake vs. real message statistics
 
-    - User interactions with AI
+- User interactions with AI
 
-    - Insights on misinformation trends
+- Insights on misinformation trends
 
+## ⚙️ Technologies Used
+
+- Backend: Django, FastAPI, WebSockets
+  
+- Frontend: HTML, CSS, JavaScript
+  
+- Database: PostgreSQL
+  
+- AI Model: NLP-based Fake News Detection
+
+## 🔧 Setup & Installation
+
+### Clone the Repository
+
+    - git clone https://github.com/charantm7/Fake-news-project.git
+    
+    - cd Fake-news-project
+    
+### Backend Setup (Django)
+
+    - python3 -m venv venv
+    
+    - source venv/bin/activate
+    
+    - pip install -r requirements.txt
+    
+    - cd backend
+    
+    - python manage.py migrate
+    
+    - python manage.py runserver
+### Chat Backend Setup (FastAPI)
+
+    - cd chat_app
+
+    - uvicorn main:app --reload
+    
 ## 🏗️ Project Structure
 
 - Fake-news-project/
@@ -66,3 +103,10 @@
 - | | ├── js/
 - │ | ├── assets/
 - │── README.md
+
+## 📜 License
+
+- This project is licensed under the GNU General Public License v3.0.
+  
+
+### 🚀 Developed for Hackathon 2025 by Team SYNDICATES! 🎯
