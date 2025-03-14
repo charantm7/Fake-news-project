@@ -75,34 +75,34 @@
     
 ## 🏗️ Project Structure
 
-- Fake-news-project/
-- |── ai_model/
-- | ├── inference.py
-- | ├── model.py
-- │── backend/ (Django Backend for Landing Page & Dashboard)
-- │ ├── manage.py
-- │ ├── authentication
-- | ├── dashboard
-- │ ├── core/
-- │ │ ├── settings.py
-- │ │ ├── urls.py
-- │ │ ├── wsgi.py
-- │── chat_app/ (FastAPI Backend for Chat & WebSockets)
-- │ ├── main.py
-- │ ├── models.py
-- │ ├── websocket.py
-- │── frontend/ (Frontend UI for Chat & Landing Page)
-- | ├── templates/
-- | | ├── templates/
-- | | | ├── landing/
-- | | | | ├── index.html
-- | | | ├── chat/
-- | | | ├── dashboard/
-- │ ├── static/
-- │ | ├── css/
-- | | ├── js/
-- │ | ├── assets/
-- │── README.md
+    - Fake-news-project/
+    - |── ai_model/
+    - | ├── inference.py
+    - | ├── model.py
+    - │── backend/ (Django Backend for Landing Page & Dashboard)
+    - │ ├── manage.py
+    - │ ├── authentication
+    - | ├── dashboard
+    - │ ├── core/
+    - │ │ ├── settings.py
+    - │ │ ├── urls.py
+    - │ │ ├── wsgi.py
+    - │── chat_app/ (FastAPI Backend for Chat & WebSockets)
+    - │ ├── main.py
+    - │ ├── models.py
+    - │ ├── websocket.py
+    - │── frontend/ (Frontend UI for Chat & Landing Page)
+    - | ├── templates/
+    - | | ├── templates/
+    - | | | ├── landing/
+    - | | | | ├── index.html
+    - | | | ├── chat/
+    - | | | ├── dashboard/
+    - │ ├── static/
+    - │ | ├── css/
+    - | | ├── js/
+    - │ | ├── assets/
+    - │── README.md
 
 ## 📜 License
 
