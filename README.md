@@ -38,23 +38,23 @@
 
 ## 🏗️ Project Structure
 
-Fake-news-project/
-│── backend/ (Django Backend for Landing Page & Dashboard)
-│ ├── manage.py
-│ ├── db.sqlite3 (or PostgreSQL)
-│ ├── backend/
-│ │ ├── settings.py
-│ │ ├── urls.py
-│ │ ├── wsgi.py
-│ ├── apps/
-│ │ ├── authentication/
-│ │ ├── dashboard/
-│── chat-backend/ (FastAPI Backend for Chat & WebSockets)
-│ ├── main.py
-│ ├── models.py
-│ ├── database.py
-│── frontend/ (Frontend UI for Chat & Landing Page)
-│ ├── index.html
-│ ├── chat.html
-│ ├── static/
-│── README.md
+- Fake-news-project/
+- │── backend/ (Django Backend for Landing Page & Dashboard)
+- │ ├── manage.py
+- │ ├── db.sqlite3 (or PostgreSQL)
+- │ ├── backend/
+- │ │ ├── settings.py
+- │ │ ├── urls.py
+- │ │ ├── wsgi.py
+- │ ├── apps/
+- │ │ ├── authentication/
+- │ │ ├── dashboard/
+- │── chat-backend/ (FastAPI Backend for Chat & WebSockets)
+- │ ├── main.py
+- │ ├── models.py
+- │ ├── database.py
+- │── frontend/ (Frontend UI for Chat & Landing Page)
+- │ ├── index.html
+- │ ├── chat.html
+- │ ├── static/
+- │── README.md
