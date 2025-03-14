@@ -14,6 +14,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = BASE_DIR.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -37,6 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #user defined custom apps
+    'authentication',
+    'dashboard',
+
 ]
 
 MIDDLEWARE = [
@@ -54,7 +60,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [PROJECT_ROOT / 'frontend/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +73,9 @@ TEMPLATES = [
     },
 ]
 
+STATICFILES_DIRS = [PROJECT_ROOT / "frontend/static"]
+
+
 WSGI_APPLICATION = 'core.wsgi.application'
 
 
@@ -75,8 +84,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgresql',      
+        'USER': 'charantm',      
+        'PASSWORD': 'Charantm@2005',
+        'HOST': 'vorex',        
+        'PORT': '5432',              
     }
 }
 
