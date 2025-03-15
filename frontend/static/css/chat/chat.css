@@ -6,7 +6,7 @@
 :root {
   --body-bg: rgb(35 35 35);
   --body-hbg: rgb(40, 40, 40);
-  --chat-sys: #2f2f2fb0;
+  --chat-sys: rgba(47, 47, 47, 0.69);
   --search-bg: rgba(75, 75, 75, 0.69);
   --text: white;
   --member-lbg: rgba(255, 255, 255, 0.079);
