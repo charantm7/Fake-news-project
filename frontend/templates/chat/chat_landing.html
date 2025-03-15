@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat APP</title>
+    <link rel="stylesheet" href="{% static 'css/chat/chat.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  </head>
+  <body class="landing-chat-body">
+    <div class="chat-landing">
+      <div class="welcome">
+        <p class="head">Welcome, Syndicates</p>
+        <p class="sub">Get started With your Chats</p>
+        <div class="open-chat-win" title="Open Chat" onclick="OpenChatWindow()">
+          <p>Open Chat Window</p>
+          <i class="fa-solid fa-up-right-from-square"></i>
+        </div>
+      </div>
+      <div class="message-area">
+        <div class="chat-members">
+          <div class="top">
+            <p class="head-chat">CHAT</p>
+            <div class="add-chat" title="Add Friends">
+              <p>Add</p>
+              <i class="fa-solid fa-plus"></i>
+            </div>
+          </div>
+          <div class="mid">
+            <div class="member-card">
+              <div class="member">
+                <img src="{% static 'assets/main1.jpg' %}" alt="" />
+                <p>Charan T M</p>
+              </div>
+              <div class="member">
+                <img src="{% static 'assets/main1.jpg' %}" alt="" />
+                <p>Charan T M</p>
+              </div>
+              <div class="member">
+                <img src="{% static 'assets/main1.jpg' %}" alt="" />
+                <p>Charan T M</p>
+              </div>
+              <div class="member">
+                <img src="{% static 'assets/main1.jpg' %}" alt="" />
+                <p>Charan T M</p>
+              </div>
+              <div class="member">
+                <img src="{% static 'assets/main1.jpg' %}" alt="" />
+                <p>Charan T M</p>
+              </div>
+              <div class="member">
+                <img src="{% static 'assets/main1.jpg' %}" alt="" />
+                <p>Charan T M</p>
+              </div>
+              <div class="member">
+                <img src="{% static 'assets/main1.jpg' %}" alt="" />
+                <p>Charan T M</p>
+              </div>
+              <div class="member">
+                <img src="{% static 'assets/main1.jpg' %}" alt="" />
+                <p>Charan T M</p>
+              </div>
+              <div class="member">
+                <img src="{% static 'assets/main1.jpg' %}" alt="" />
+                <p>Charan T M</p>
+              </div>
+              <div class="member">
+                <img src="{% static 'assets/main1.jpg' %}" alt="" />
+                <p>Charan T M</p>
+              </div>
+              <div class="member">
+                <img src="{% static 'assets/main1.jpg' %}" alt="" />
+                <p>Charan T M</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function OpenChatWindow() {
+        window.location.href = "{% url 'Chat' %}";
+      }
+    </script>
+  </body>
+</html>

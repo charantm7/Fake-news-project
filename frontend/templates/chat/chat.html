@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat</title>
+    <link rel="stylesheet" href="{% static 'css/chat/chat.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  </head>
+  <body class="chat-body">
+    <nav>
+      <div class="left">
+        <img src="{% static 'assets/main1.jpg' %}" alt=".." />
+        <p>Trap Intel</p>
+      </div>
+      <i class="fa-solid fa-arrow-left" onclick="BackToLanding()"></i>
+    </nav>
+    <aside>
+      <div class="sidebar" id="sidebar">
+        <ul class="nav_list">
+          <li id="menuBtn">
+            <i class="fa-solid fa-bars" style="font-size: 17px"></i>
+          </li>
+          <li>
+            <a href="/">
+              <i class="fas fa-home"></i>
+              <span class="link_name">Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-info-circle"></i>
+              <span class="link_name">About</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fas fa-wrench"></i>
+              <span class="link_name">Services</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fas fa-chart-line"></i>
+              <span class="link_name">Analytics</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <i class="fas fa-clock"></i>
+              <span class="link_name">History</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fas fa-cog"></i>
+              <span class="link_name">Settings</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+    <main>
+      <div class="member-list">
+        <div class="top">
+          <h2>Chat</h2>
+          <div class="editable-icon">
+            <i class="fa-regular fa-pen-to-square" title="New"></i>
+            <i class="fa-regular fa-comment-dots" title="Query"></i>
+          </div>
+        </div>
+        <div class="mid">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search Contacts" />
+        </div>
+        <div class="bottom">
+          <div class="member-card">
+            <div class="member">
+              <img src="{% static 'assets/main1.jpg' %}" alt="" />
+              <p>Charan T M</p>
+            </div>
+            <div class="member">
+              <img src="{% static 'assets/main1.jpg' %}" alt="" />
+              <p>Charan T M</p>
+            </div>
+            <div class="member">
+              <img src="{% static 'assets/main1.jpg' %}" alt="" />
+              <p>Charan T M</p>
+            </div>
+            <div class="member">
+              <img src="{% static 'assets/main1.jpg' %}" alt="" />
+              <p>Charan T M</p>
+            </div>
+            <div class="member">
+              <img src="{% static 'assets/main1.jpg' %}" alt="" />
+              <p>Charan T M</p>
+            </div>
+            <div class="member">
+              <img src="{% static 'assets/main1.jpg' %}" alt="" />
+              <p>Charan T M</p>
+            </div>
+            <div class="member">
+              <img src="{% static 'assets/main1.jpg' %}" alt="" />
+              <p>Charan T M</p>
+            </div>
+            <div class="member">
+              <img src="{% static 'assets/main1.jpg' %}" alt="" />
+              <p>Charan T M</p>
+            </div>
+            <div class="member">
+              <img src="{% static 'assets/main1.jpg' %}" alt="" />
+              <p>Charan T M</p>
+            </div>
+            <div class="member">
+              <img src="{% static 'assets/main1.jpg' %}" alt="" />
+              <p>Charan T M</p>
+            </div>
+            <div class="member">
+              <img src="{% static 'assets/main1.jpg' %}" alt="" />
+              <p>Charan T M</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuBtn = document.getElementById("menuBtn");
+        const sidebar = document.getElementById("sidebar");
+        menuBtn.addEventListener("click", () => {
+          sidebar.classList.toggle("active");
+        });
+
+        menuBtn.addEventListener("click", () => {
+          sidebar.classList.toggle("visible");
+        });
+      });
+
+      function BackToLanding() {
+        window.location.href = "{% url 'Chat-Landing' %}";
+      }
+    </script>
+  </body>
+</html>

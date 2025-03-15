@@ -1,10 +1,10 @@
 {% extends "landing/base.html" %} {% load static %} {% block link %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+<link rel="stylesheet" href="{% static 'css/landing/home.css' %}" />
 {% endblock %} {% block main %}
 <div class="landing-1">
   <img class="landing-image" src="{% static 'assets/main1-bg.png'%}" alt="..." />
   <div class="landing-inner">
-    <p class="vt323-regular">🔥 AI-Powered Reverse Phishing Simulator</p>
+    <p class="vt323-regular">🔥 AI-Powered Fake-News Detector & Misinformation Analyzer</p>
     <div class="logo-container">
       <img src="{% static 'assets/logo-main.png'%}" alt="" />
       <p class="orbitron">Trap Intel</p>
@@ -15,17 +15,20 @@
         <small class="open-sans">Authentication</small>
         <a class="roboto-mono" style="width: 38%" href="{% url 'Auth' %}?action=signup">Get started</a>
       </div>
-      {% elif user.is_authenticated %}
-      <div class="container-1">
-        <small class="open-sans">{{user.username}}</small>
-        <a class="roboto-mono" style="width: 27%" href="#">Dashboard</a>
-      </div>
-      {% endif %}
-
       <div class="container-2">
         <small class="open-sans">Secure</small>
         <a class="roboto-mono" href="#" style="width: 35%">Learn more</a>
       </div>
+      {% elif user.is_authenticated %}
+      <div class="container-1">
+        <small class="open-sans">{{user.username}}</small>
+        <a class="roboto-mono" style="width: 27%" href="{% url 'Dashboard' %}">Dashboard</a>
+      </div>
+      <div class="container-2">
+        <small class="open-sans">Chat</small>
+        <a class="roboto-mono" href="{% url 'Chat-Landing' %}" style="width: 38.5%">Try Demo Chat</a>
+      </div>
+      {% endif %}
     </div>
   </div>
 </div>

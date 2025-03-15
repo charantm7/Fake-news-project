@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trap Intel</title>
-    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/landing/base.css' %}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -41,8 +41,8 @@
         <a href="{% url 'Auth' %}?action=signup"> Register</a>
         {% elif user.is_authenticated %} {% if not user.is_superuser %}
         <a href="/">Home</a>
-        <a href="#">Dashboard</a>
-        <a href="#">Simulation</a>
+        <a href="{% url 'Dashboard' %}">Dashboard</a>
+        <a href="{% url 'Chat-Landing' %}">Try Chat</a>
         <a href="#">Reports</a>
         <a href="#">Alerts</a>
         <a href="{% url 'User-Logout' %}">Logout</a>
@@ -66,12 +66,14 @@
     <aside id="sidebar" class="roboto-mono">
       <div class="top">
         <a href="#">Attacks</a>
+        <a href="{% url 'Dashboard' %}">Dashboard</a>
+        <a href="{% url 'Chat-Landing'%}">Try Demo Chat</a>
         <a href="#">Service</a>
         <a href="#">Phishing</a>
       </div>
       <div class="bottom">
         <a href="#">Settings</a><a href="#">Profile</a>
-        <a href="{% url 'User-Logout'%}">Logout</a>
+        <a href="{% url 'User-Logout' %}">Logout</a>
       </div>
     </aside>
 

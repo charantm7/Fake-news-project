@@ -84,3 +84,12 @@ def user_logout(request):
     messages.success(request, 'Logout successful')
     return redirect('Home')
 
+
+def chat_landing(request):
+    return render(request, 'chat/chat_landing.html')
+
+def chat(request):
+    return render(request, 'chat/chat.html')
+
+def dashboard(request):
+    return render(request, 'dashboard/dash.html')

@@ -1,0 +1,86 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard/dash.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="left">
+        <a href="{% url 'Dashboard' %}">Dashboard</a>
+      </div>
+      <div class="right">
+        <div class="right-1">
+          <a href="{% url 'Home' %}">Home</a>
+          <a href="{% url 'Chat-Landing' %}">Try Demo Chat</a>
+          <p>About</p>
+          <p>FAQ</p>
+        </div>
+        <div class="right-2">
+          <img src="{% static 'assets/main1.jpg' %}" alt="..." />
+          <p>Charan T M</p>
+        </div>
+      </div>
+    </nav>
+    <aside>
+      <div class="sidebar">
+        <div class="top">
+          <img src="#" alt="" />
+          <p>Trap Intel</p>
+        </div>
+        <div class="mid">
+          <div class="mid-1">
+            <i class="fa-solid fa-gauge-high"></i>
+            <a href="{% url 'Dashboard' %}">Dashboard</a>
+          </div>
+          <div class="mid-2">
+            <i class="fa-brands fa-searchengin"></i>
+            <a>Finding</a>
+          </div>
+          <div class="mid-3">
+            <i class="fa-solid fa-file-lines"></i>
+            <a>Assets</a>
+          </div>
+          <div class="mid-4">
+            <i class="fa-solid fa-barcode"></i>
+            <a>Scan</a>
+          </div>
+          <div class="mid-5">
+            <i class="fa-solid fa-desktop"></i>
+            <a>Monitoring</a>
+          </div>
+        </div>
+        <div class="bottom">
+          <div class="bottom-1">
+            <i class="fa-solid fa-gear"></i>
+            <a>Settings</a>
+          </div>
+          <div class="bottom-2">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <a href="{% url 'User-Logout' %}">Logout</a>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <main>
+      <div class="card-1"></div>
+      <div class="card-2">
+        <div class="card-2-min-1"></div>
+        <div class="card-2-min-2"></div>
+      </div>
+      <div class="card-3">
+        <div class="card-3-min-1"></div>
+        <div class="card-3-min-2"></div>
+        <div class="card-3-min-3"></div>
+        <div class="card-3-min-4"></div>
+      </div>
+      <div class="card-4"></div>
+    </main>
+    <footer></footer>
+  </body>
+</html>
