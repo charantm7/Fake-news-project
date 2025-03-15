@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'authentication',
     'dashboard',
 
+    "django_select2",
+
 ]
 
 MIDDLEWARE = [

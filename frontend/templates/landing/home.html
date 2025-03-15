@@ -26,7 +26,9 @@
       </div>
       <div class="container-2">
         <small class="open-sans">Chat</small>
-        <a class="roboto-mono" href="{% url 'Chat-Landing' %}" style="width: 38.5%">Try Demo Chat</a>
+        <a class="roboto-mono" href="{% url 'Chat-Landing' request.user.username  %}" style="width: 38.5%"
+          >Try Demo Chat</a
+        >
       </div>
       {% endif %}
     </div>

@@ -28,6 +28,105 @@ html ::-webkit-scrollbar {
   color: var(--text);
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
+.landing-chat-body .message {
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f4f4f4;
+  padding: 10px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-width: 80%;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+.landing-chat-body .message.success {
+  background-color: #d4edda;
+  border-bottom: 3px solid #28a745;
+}
+.landing-chat-body .message.success p {
+  color: #155724;
+}
+.landing-chat-body .message.error {
+  background-color: #f8d7da;
+  border-bottom: 3px solid #dc3545;
+}
+.landing-chat-body .message.error p {
+  color: #7d111b;
+}
+.landing-chat-body .message .close-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #333;
+  cursor: pointer;
+  margin-left: 15px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+.landing-chat-body .message .close-btn:hover {
+  color: #ff0000;
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.landing-chat-body .message.fade-out {
+  animation: fadeOut 3s forwards;
+}
+.landing-chat-body .add-user-form {
+  display: none;
+  position: absolute;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  width: 20%;
+  left: 35%;
+  top: 30%;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid white;
+  padding: 2rem;
+  background-color: rgba(30, 30, 30, 0.84);
+  border-radius: 10px;
+}
+.landing-chat-body .add-user-form .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.landing-chat-body .add-user-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.landing-chat-body .add-user-form form .name {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.landing-chat-body .add-user-form form .name input {
+  height: 30px;
+}
+.landing-chat-body .add-user-form form .users {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.landing-chat-body .add-user-form form button {
+  width: 30%;
+  margin-top: 5%;
+  height: 30px;
+  border-radius: 5px;
+}
 .landing-chat-body .chat-landing {
   display: flex;
   background-color: var(--chat-sys);
@@ -354,8 +453,22 @@ html ::-webkit-scrollbar {
 .chat-body main .chat-area .top {
   border-top: 1px solid var(--border1);
   border-bottom: 1px solid var(--border1);
-  padding: 2rem;
+  padding: 0.8rem;
   background-color: var(--body-bg);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.chat-body main .chat-area .top img {
+  height: 35px;
+  width: 35px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  margin-left: 20px;
+}
+.chat-body main .chat-area .top p {
+  font-size: 20px;
 }
 .chat-body main .chat-area .mid {
   flex: 1;
@@ -367,5 +480,27 @@ html ::-webkit-scrollbar {
 .chat-body main .chat-area .bottom {
   border-top: 1px solid var(--border1);
   background-color: var(--body-bg);
-  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 3rem 0.2rem 1rem;
+}
+.chat-body main .chat-area .bottom input {
+  padding: 1rem;
+  width: 90%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-size: large;
+}
+.chat-body main .chat-area .bottom button {
+  padding: 0.8rem;
+  background-color: var(--chat-sys);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.chat-body main .chat-area .bottom button i {
+  color: var(--text);
+  font-size: 18px;
 }/*# sourceMappingURL=chat.css.map */

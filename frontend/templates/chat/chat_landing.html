@@ -7,8 +7,38 @@
     <title>Chat APP</title>
     <link rel="stylesheet" href="{% static 'css/chat/chat.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Include Select2 CSS & JS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
   </head>
   <body class="landing-chat-body">
+    {% if messages %} {% for message in messages %}
+    <div class="message {% if message.tags == 'error' %}error{% else %}success{% endif %}">
+      <p>{{ message }}</p>
+      <button class="close-btn" onclick="this.parentElement.style.display='none'">x</button>
+    </div>
+    {% endfor %} {% endif %}
+    <div class="add-user-form">
+      <div class="top">
+        <h2>Add User</h2>
+        <i class="fa-solid fa-xmark" onclick="CloseForm()"></i>
+      </div>
+
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="name">
+          <label for="name">Name</label>
+          {{form.name}}
+        </div>
+        <div class="users">
+          <label for="username">User</label>
+          {{form.user2}}
+        </div>
+        <button type="submit">Add User</button>
+      </form>
+    </div>
     <div class="chat-landing">
       <div class="left">
         <nav>
@@ -48,57 +78,19 @@
         <div class="chat-members">
           <div class="top">
             <p class="head-chat">CHAT</p>
-            <div class="add-chat" title="Add Friends">
+            <div class="add-chat" title="Add Friends" onclick="OpenForm()">
               <p>Add</p>
               <i class="fa-solid fa-plus"></i>
             </div>
           </div>
           <div class="mid">
             <div class="member-card">
+              {% for member in chat_rooms %}
               <div class="member">
                 <img src="{% static 'assets/main1.jpg' %}" alt="" />
-                <p>Charan T M</p>
+                <p>{{ member.user2.username }}</p>
               </div>
-              <div class="member">
-                <img src="{% static 'assets/main1.jpg' %}" alt="" />
-                <p>Charan T M</p>
-              </div>
-              <div class="member">
-                <img src="{% static 'assets/main1.jpg' %}" alt="" />
-                <p>Charan T M</p>
-              </div>
-              <div class="member">
-                <img src="{% static 'assets/main1.jpg' %}" alt="" />
-                <p>Charan T M</p>
-              </div>
-              <div class="member">
-                <img src="{% static 'assets/main1.jpg' %}" alt="" />
-                <p>Charan T M</p>
-              </div>
-              <div class="member">
-                <img src="{% static 'assets/main1.jpg' %}" alt="" />
-                <p>Charan T M</p>
-              </div>
-              <div class="member">
-                <img src="{% static 'assets/main1.jpg' %}" alt="" />
-                <p>Charan T M</p>
-              </div>
-              <div class="member">
-                <img src="{% static 'assets/main1.jpg' %}" alt="" />
-                <p>Charan T M</p>
-              </div>
-              <div class="member">
-                <img src="{% static 'assets/main1.jpg' %}" alt="" />
-                <p>Charan T M</p>
-              </div>
-              <div class="member">
-                <img src="{% static 'assets/main1.jpg' %}" alt="" />
-                <p>Charan T M</p>
-              </div>
-              <div class="member">
-                <img src="{% static 'assets/main1.jpg' %}" alt="" />
-                <p>Charan T M</p>
-              </div>
+              {% endfor %}
             </div>
           </div>
         </div>
@@ -107,6 +99,22 @@
     <script>
       function OpenChatWindow() {
         window.location.href = "{% url 'Chat' %}";
+      }
+
+      $(document).ready(function () {
+        $(".user-search").select2({
+          placeholder: "Search for a user...",
+          allowClear: true,
+        });
+      });
+
+      function CloseForm() {
+        document.querySelector(".add-user-form").style.display = "none";
+        document.querySelector(".card").classList.remove("blur-background");
+      }
+      function OpenForm() {
+        document.querySelector(".add-user-form").style.display = "flex";
+        document.querySelector(".card").classList.add("blur-background");
       }
     </script>
   </body>

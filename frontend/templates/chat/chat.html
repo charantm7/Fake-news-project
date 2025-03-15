@@ -124,12 +124,27 @@
           </div>
         </div>
       </div>
-      <div class="chat-area">
-        <div class="top"></div>
-        <div class="mid">
+      <div class="chat-area" data-id="{{member_name}}">
+        <div class="top">
+          {% if request.user.is_authenticated %}
+          <img src="{% static 'assets/main1.jpg'%}" alt=".." />
+          {% else %}
+          <img
+            src="https://ui-avatars.com/api/?name={{ member_name|urlencode }}&size=64&background=random"
+            style="border-radius: 50%; height: 35px; width: 35px; object-fit: cover"
+          />
+          {% endif %}
+          <p>Charan T M</p>
+        </div>
+        <div class="mid" id="chatbox">
           <img src="{% static 'assets/chat1-bg.jpeg'%}" alt="" />
         </div>
-        <div class="bottom"></div>
+        <div class="bottom">
+          <input type="text" placeholder="Type a message" />
+          <button type="submit">
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </div>
       </div>
     </main>
 
@@ -147,7 +162,7 @@
       });
 
       function BackToLanding() {
-        window.location.href = "{% url 'Chat-Landing' %}";
+        window.location.href = "{% url 'Chat-Landing' request.user.username %}";
       }
     </script>
   </body>

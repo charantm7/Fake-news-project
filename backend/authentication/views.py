@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -7,6 +8,10 @@ from django.conf import settings
 import os
 import random
 from django.urls import reverse_lazy
+from .form import AddUserToChatForm
+from .models import ChatRoom
+from django.db.models import Q
+
 
 # Create your views here.
 os.environ["REPLICATE_API_TOKEN"] = "r8_3ppGXXZp8VSLLMgc37V1eLefKAPMVOr4GbCxO"
@@ -78,8 +83,6 @@ def user_register(request):
     return render(request, 'landing/auth.html')
 
 
-
-
 def user_logout(request):
     if request.user.is_authenticated:
         logout(request)
@@ -90,12 +93,39 @@ def user_logout(request):
         return redirect(f'{reverse("Auth")}?action=login')
 
 
-def chat_landing(request):
-    if request.user.is_authenticated:
-        return render(request, 'chat/chat_landing.html')
+@login_required
+def chat_landing(request, user_name):
+    user = get_object_or_404(User, username=user_name)
+    if request.method == 'POST':
+        form = AddUserToChatForm(request.POST, request=request)
+        if form.is_valid():
+            
+            selected_user = form.cleaned_data['user2']
+
+            chat_room, created = ChatRoom.objects.get_or_create(
+                user1=request.user,
+                user2=selected_user,
+                defaults={'name': f"Chat: {request.user.username} & {selected_user.username}"}
+            )
+
+            if created:
+                messages.success(request, f"Chat created with {selected_user.username}")
+            else:
+                messages.warning(request, "Chat room already exists!")
+
+            return redirect('Chat-Landing', user_name=user_name)
+
     else:
-        messages.error(request, 'You are not logged in')
-        return redirect(f'{reverse("Auth")}?action=login')
+        form = AddUserToChatForm(request=request)
+
+    # Fetch chats where the user is either user1 or user2
+    chat_rooms = ChatRoom.objects.filter(Q(user1=request.user) | Q(user2=request.user))
+
+    context = {
+        'form': form,
+        'chat_rooms': chat_rooms
+    }
+    return render(request, "chat/chat_landing.html", context)
     
 
 
@@ -114,3 +144,13 @@ def dashboard(request):
         messages.error(request, 'You are not logged in')
         return redirect(f'{reverse("Auth")}?action=login')
     
+
+def search_users(request):
+    query = request.GET.get("q", "")
+    if query:
+        users = User.objects.filter(Q(username__icontains=query))[:10]
+        results = [{"id": user.id, "text": user.username} for user in users]
+    else:
+        results = []
+
+    return JsonResponse({"results": results}) 
