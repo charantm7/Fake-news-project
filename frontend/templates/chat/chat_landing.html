@@ -10,12 +10,38 @@
   </head>
   <body class="landing-chat-body">
     <div class="chat-landing">
-      <div class="welcome">
-        <p class="head">Welcome, Syndicates</p>
-        <p class="sub">Get started With your Chats</p>
-        <div class="open-chat-win" title="Open Chat" onclick="OpenChatWindow()">
-          <p>Open Chat Window</p>
-          <i class="fa-solid fa-up-right-from-square"></i>
+      <div class="left">
+        <nav>
+          <div class="logo">
+            <img src="{% static 'assets/main1.jpg' %}" alt="" />
+            <p>Chat APP</p>
+          </div>
+          <div class="nav-links">
+            <div class="nav-link">
+              <i class="fa-solid fa-house"></i>
+              <a href="{% url 'Home' %}">Home</a>
+            </div>
+            <div class="nav-link">
+              <i class="fa-brands fa-rocketchat"></i>
+              <a href="{% url 'Chat' %}">Chat Window</a>
+            </div>
+            <div class="nav-link">
+              <i class="fa-solid fa-cog"></i>
+              <a href="{% url 'Dashboard' %}">Dashboard</a>
+            </div>
+            <div class="nav-link">
+              <i class="fa-solid fa-user"></i>
+              <a href="#">Profile</a>
+            </div>
+          </div>
+        </nav>
+        <div class="bottom">
+          <p class="head">Welcome, Syndicates</p>
+          <p class="sub">Get started With your Chats</p>
+          <div class="open-chat-win" title="Open Chat" onclick="OpenChatWindow()">
+            <p>Open Chat Window</p>
+            <i class="fa-solid fa-up-right-from-square"></i>
+          </div>
         </div>
       </div>
       <div class="message-area">

@@ -6,14 +6,15 @@
 :root {
   --body-bg: rgb(35 35 35);
   --body-hbg: rgb(40, 40, 40);
-  --chat-sys: rgb(54 54 54 / 69%);
+  --chat-sys: #2f2f2fb0;
   --search-bg: rgba(75, 75, 75, 0.69);
   --text: white;
   --member-lbg: rgba(255, 255, 255, 0.079);
   --member-hbg: rgba(255, 255, 255, 0.11);
   --hover-light: rgba(255, 255, 255, 0.112);
   --placeholder: rgba(255, 255, 255, 0.414);
-  --border: rgba(34, 34, 34, 0.811);
+  --border: rgba(34, 34, 34, 0.927);
+  --border1: rgba(79, 79, 79, 0.717);
 }
 
 html ::-webkit-scrollbar {
@@ -34,22 +35,73 @@ html ::-webkit-scrollbar {
   height: 95vh;
   border-radius: 10px;
 }
-.landing-chat-body .chat-landing .welcome {
+.landing-chat-body .chat-landing .left {
+  display: flex;
+  flex-direction: column;
   width: 50%;
+}
+.landing-chat-body .chat-landing .left nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-left: 8%;
+  margin-top: 5%;
+  padding: 0.8rem;
+  background-color: var(--body-bg);
+  border-radius: 10px;
+}
+.landing-chat-body .chat-landing .left nav .nav-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  gap: 2rem;
+}
+.landing-chat-body .chat-landing .left nav .nav-links .nav-link {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  gap: 8px;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+}
+.landing-chat-body .chat-landing .left nav .nav-links .nav-link a {
+  text-decoration: none;
+  color: white;
+}
+.landing-chat-body .chat-landing .left nav .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.landing-chat-body .chat-landing .left nav .logo p {
+  font-size: 19px;
+}
+.landing-chat-body .chat-landing .left nav .logo img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.landing-chat-body .chat-landing .left .bottom {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.landing-chat-body .chat-landing .welcome .head {
+.landing-chat-body .chat-landing .left .bottom .head {
   margin-top: 20%;
   margin-left: 10%;
   font-size: 4vw;
 }
-.landing-chat-body .chat-landing .welcome .sub {
+.landing-chat-body .chat-landing .left .bottom .sub {
   margin-left: 12%;
   font-size: 20px;
 }
-.landing-chat-body .chat-landing .welcome .open-chat-win {
+.landing-chat-body .chat-landing .left .bottom .open-chat-win {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,7 +116,7 @@ html ::-webkit-scrollbar {
   font-size: 14px;
   border: 1px solid rgba(200, 200, 200, 0.262745098);
 }
-.landing-chat-body .chat-landing .welcome .open-chat-win:hover {
+.landing-chat-body .chat-landing .left .bottom .open-chat-win:hover {
   background-color: var(--body-hbg);
 }
 .landing-chat-body .chat-landing .message-area {
@@ -220,7 +272,7 @@ html ::-webkit-scrollbar {
   display: flex;
   flex-direction: column;
   gap: 1.7rem;
-  border-right: 1px solid var(--border);
+  border-right: 1px solid var(--border1);
   width: 25%;
   padding: 1.5rem 1.5rem 0 1.5rem;
 }
@@ -268,7 +320,7 @@ html ::-webkit-scrollbar {
   overflow-y: hidden;
 }
 .chat-body main .member-list .bottom .member-card {
-  max-height: 570px;
+  max-height: 630px;
   display: flex;
   flex-direction: column;
   padding: 3px 10px 0 10px;
@@ -293,4 +345,27 @@ html ::-webkit-scrollbar {
 }
 .chat-body main .member-list .bottom .member-card .member:hover {
   background-color: var(--member-hbg);
+}
+.chat-body main .chat-area {
+  width: 74%;
+  display: flex;
+  flex-direction: column;
+}
+.chat-body main .chat-area .top {
+  border-top: 1px solid var(--border1);
+  border-bottom: 1px solid var(--border1);
+  padding: 2rem;
+  background-color: var(--body-bg);
+}
+.chat-body main .chat-area .mid {
+  flex: 1;
+}
+.chat-body main .chat-area .mid img {
+  width: 1200px;
+  height: 600px;
+}
+.chat-body main .chat-area .bottom {
+  border-top: 1px solid var(--border1);
+  background-color: var(--body-bg);
+  padding: 2rem;
 }/*# sourceMappingURL=chat.css.map */

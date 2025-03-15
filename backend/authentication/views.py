@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 import os
 import random
+from django.urls import reverse_lazy
 
 # Create your views here.
 os.environ["REPLICATE_API_TOKEN"] = "r8_3ppGXXZp8VSLLMgc37V1eLefKAPMVOr4GbCxO"
@@ -78,18 +79,38 @@ def user_register(request):
 
 
 
-@login_required(login_url='Login')
+
 def user_logout(request):
-    logout(request)
-    messages.success(request, 'Logout successful')
-    return redirect('Home')
+    if request.user.is_authenticated:
+        logout(request)
+        messages.success(request, 'Logout successful')
+        return redirect('Home')
+    else:
+        messages.error(request, 'You are not logged in')
+        return redirect(f'{reverse("Auth")}?action=login')
 
 
 def chat_landing(request):
-    return render(request, 'chat/chat_landing.html')
+    if request.user.is_authenticated:
+        return render(request, 'chat/chat_landing.html')
+    else:
+        messages.error(request, 'You are not logged in')
+        return redirect(f'{reverse("Auth")}?action=login')
+    
+
 
 def chat(request):
-    return render(request, 'chat/chat.html')
+    if request.user.is_authenticated:
+        return render(request, 'chat/chat.html')
+    else:
+        messages.error(request, 'You are not logged in')
+        return redirect(f'{reverse("Auth")}?action=login')
+    
 
 def dashboard(request):
-    return render(request, 'dashboard/dash.html')
+    if request.user.is_authenticated:
+        return render(request, 'dashboard/dash.html')
+    else:
+        messages.error(request, 'You are not logged in')
+        return redirect(f'{reverse("Auth")}?action=login')
+    

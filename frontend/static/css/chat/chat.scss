@@ -6,14 +6,15 @@
 :root {
   --body-bg: rgb(35 35 35);
   --body-hbg: rgb(40, 40, 40);
-  --chat-sys: rgb(54 54 54 / 69%);
+  --chat-sys: rgba(47, 47, 47, 0.69);
   --search-bg: rgba(75, 75, 75, 0.69);
   --text: white;
   --member-lbg: rgba(255, 255, 255, 0.079);
   --member-hbg: rgba(255, 255, 255, 0.11);
   --hover-light: rgba(255, 255, 255, 0.112);
   --placeholder: rgba(255, 255, 255, 0.414);
-  --border: rgba(34, 34, 34, 0.811);
+  --border: rgba(34, 34, 34, 0.927);
+  --border1: rgba(79, 79, 79, 0.717);
 }
 
 html {
@@ -35,40 +36,95 @@ html {
     flex: 1;
     height: 95vh;
     border-radius: 10px;
-
-    .welcome {
-      width: 50%;
-      //   border: 1px solid white;
+    .left {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      .head {
-        margin-top: 20%;
-        margin-left: 10%;
-        font-size: 4vw;
-      }
-      .sub {
-        margin-left: 12%;
-        font-size: 20px;
-      }
-      .open-chat-win {
+      width: 50%;
+
+      nav {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        width: 26%;
-        margin-left: 12%;
-        margin-top: 10px;
+        flex-direction: row;
         // border: 1px solid white;
-        padding: 15px;
-        border-radius: 30px;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-left: 8%;
+        margin-top: 5%;
+        padding: 0.8rem;
         background-color: var(--body-bg);
-        cursor: pointer;
-        font-size: 14px;
-        border: 1px solid #c8c8c843;
+        border-radius: 10px;
+        .nav-links {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 2rem;
+          gap: 2rem;
+          // border: 1px solid white;
+          .nav-link {
+            display: flex;
+            flex-direction: row;
+            padding: 5px;
+            // border: 1px solid white;
+            gap: 8px;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            a {
+              text-decoration: none;
+              color: white;
+            }
+          }
+        }
+
+        .logo {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          p {
+            font-size: 19px;
+          }
+
+          img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+        }
       }
-      .open-chat-win:hover {
-        background-color: var(--body-hbg);
+      .bottom {
+        width: 100%;
+        //   border: 1px solid white;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        .head {
+          margin-top: 20%;
+          margin-left: 10%;
+          font-size: 4vw;
+        }
+        .sub {
+          margin-left: 12%;
+          font-size: 20px;
+        }
+        .open-chat-win {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          width: 26%;
+          margin-left: 12%;
+          margin-top: 10px;
+          // border: 1px solid white;
+          padding: 15px;
+          border-radius: 30px;
+          background-color: var(--body-bg);
+          cursor: pointer;
+          font-size: 14px;
+          border: 1px solid #c8c8c843;
+        }
+        .open-chat-win:hover {
+          background-color: var(--body-hbg);
+        }
       }
     }
     .message-area {
@@ -244,7 +300,7 @@ html {
       display: flex;
       flex-direction: column;
       gap: 1.7rem;
-      border-right: 1px solid var(--border);
+      border-right: 1px solid var(--border1);
       width: 25%;
       padding: 1.5rem 1.5rem 0 1.5rem;
 
@@ -294,7 +350,7 @@ html {
 
         overflow-y: hidden;
         .member-card {
-          max-height: 570px;
+          max-height: 630px;
           display: flex;
           flex-direction: column;
           padding: 3px 10px 0 10px;
@@ -323,6 +379,30 @@ html {
             background-color: var(--member-hbg);
           }
         }
+      }
+    }
+    .chat-area {
+      width: 74%;
+      // border: 1px solid var(--text);
+      display: flex;
+      flex-direction: column;
+      .top {
+        border-top: 1px solid var(--border1);
+        border-bottom: 1px solid var(--border1);
+        padding: 2rem;
+        background-color: var(--body-bg);
+      }
+      .mid {
+        flex: 1;
+        img {
+          width: 1200px;
+          height: 600px;
+        }
+      }
+      .bottom {
+        border-top: 1px solid var(--border1);
+        background-color: var(--body-bg);
+        padding: 2rem;
       }
     }
   }
