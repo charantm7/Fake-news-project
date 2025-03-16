@@ -3,5 +3,5 @@ from .consumer import ChatConsumer
   # Ensure this import exists
 
 websocket_urlpatterns = [
-    path('chat/<str:chat_name>/', ChatConsumer.as_asgi()),
+    path('ws/chat/<str:chat_name>/', ChatConsumer.as_asgi()),
 ]

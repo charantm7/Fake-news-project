@@ -7,8 +7,18 @@
     <title>Chat</title>
     <link rel="stylesheet" href="{% static 'css/chat/chat.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Orbitron:wght@500&family=Silkscreen&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Orbitron:wght@500&family=Quicksand:wght@300..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Silkscreen&family=VT323&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body class="chat-body">
+  <body class="chat-body Quicksand">
     <nav>
       <div class="left">
         <img src="{% static 'assets/main1.jpg' %}" alt=".." />
@@ -77,61 +87,65 @@
         </div>
         <div class="bottom">
           <div class="member-card">
-            <div class="member">
-              <img src="{% static 'assets/main1.jpg' %}" alt="" />
-              <p>Charan T M</p>
-            </div>
-            <div class="member">
-              <img src="{% static 'assets/main1.jpg' %}" alt="" />
-              <p>Charan T M</p>
-            </div>
-            <div class="member">
-              <img src="{% static 'assets/main1.jpg' %}" alt="" />
-              <p>Charan T M</p>
-            </div>
-            <div class="member">
-              <img src="{% static 'assets/main1.jpg' %}" alt="" />
-              <p>Charan T M</p>
-            </div>
-            <div class="member">
-              <img src="{% static 'assets/main1.jpg' %}" alt="" />
-              <p>Charan T M</p>
-            </div>
-            <div class="member">
-              <img src="{% static 'assets/main1.jpg' %}" alt="" />
-              <p>Charan T M</p>
-            </div>
-            <div class="member">
-              <img src="{% static 'assets/main1.jpg' %}" alt="" />
-              <p>Charan T M</p>
-            </div>
-            <div class="member">
-              <img src="{% static 'assets/main1.jpg' %}" alt="" />
-              <p>Charan T M</p>
-            </div>
-            <div class="member">
-              <img src="{% static 'assets/main1.jpg' %}" alt="" />
-              <p>Charan T M</p>
-            </div>
-            <div class="member">
-              <img src="{% static 'assets/main1.jpg' %}" alt="" />
-              <p>Charan T M</p>
-            </div>
-            <div class="member">
-              <img src="{% static 'assets/main1.jpg' %}" alt="" />
-              <p>Charan T M</p>
+            <div class="contacts">
+              {% for item in user_last_messages %}
+              <a
+                href="{% url 'Chat' chat_name=item.user.username %}"
+                class="list-group-item list-group-item-action {% if item.user.username == room_name %} active {% endif %}"
+                data-id="{{ room_name }}"
+              >
+                <div class="members-container">
+                  <!-- Profile Icon -->
+                  <img
+                    src="https://ui-avatars.com/api/?name={{ item.user.username|urlencode }}&size=64&background=random"
+                    alt="{{ item.user.username }}'s Profile Image"
+                    class="profile-icon rounded-circle mr-3"
+                    style="width: 2.5rem; height: 2.5rem; object-fit: cover"
+                  />
+
+                  <!-- Message Content and Username -->
+                  <div class="name-message">
+                    <div class="name-date">
+                      <strong class="text-truncate">{{ item.user.username }}</strong>
+                      {% if item.last_message %}
+                      <small class="text-nowrap timestamp">
+                        {{ item.last_message.timestamp|date:"H:i" }}</small
+                      >
+                      {% endif %}
+                    </div>
+
+                    <!-- Last message preview -->
+                    <div class="d-flex flex-direction-row">
+                      {% if item.last_message %}
+                      <small
+                        class="d-flex text-truncate last-msg flex-directiion-row message-by"
+                        style="max-width: 90%; font-size: 14px"
+                        id="last-message"
+                      >
+                        {% if item.last_message.sender == request.user %} You: {% endif %}
+                        <div>{{ item.last_message.content|truncatewords:5 }}</div>
+                      </small>
+                      {% else %}
+                      <small class="">No messages yet</small>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </a>
+              {% endfor %}
             </div>
           </div>
         </div>
       </div>
-      <div class="col-9 d-flex flex-column chat" data-id="{{ room_name }}">
-        <div class="d-flex align-items-center p-1 justify-content-between">
-          <div>
+
+      <div class="chat" data-id="{{ room_name }}">
+        <div class="chat-top">
+          <div class="name-c">
             <img
               src="https://ui-avatars.com/api/?name={{ room_name|urlencode }}&size=64&background=random"
-              style="border-radius: 50%; height: 45px; width: auto"
+              style="border-radius: 50%; height: 35px; width: 35px; object-fit: cover"
             />
-            <p class="mb-0" style="padding-left: 10px">{{ room_name }}</p>
+            <p style="padding-left: 10px">{{ room_name }}</p>
           </div>
 
           <form method="GET" action="" class="p-3 ml-auto">
@@ -146,31 +160,34 @@
             </div>
           </form>
         </div>
-
-        <div id="chatbox" class="chatbox flex-fill p-3">
+        <img class="chat-bg" src="{% static 'assets/chat5.jpeg'%}" alt="..." />
+        <div id="chatbox" class="chatbox">
           {% if chats %} {% for message in chats %}
           <div
             class="chat-message {% if message.sender == request.user %} sender {% else %} receiver {% endif %}"
           >
-            <span>{{ message.content }}</span>
+            <div class="message">
+              <span>{{ message.content }}</span>
+              <p class="text-nowrap timestamp">{{ message.timestamp|date:"H:i" }}</p>
+            </div>
           </div>
           {% endfor %} {% else %}
           <p class="no-messages">No Messages.</p>
           {% endif %}
         </div>
 
-        <div class="chat-input">
-          <div class="input-group">
-            <input type="text" id="my_input" placeholder="Type a message..." required />
-            <div class="input-group-append">
-              <button id="submit_button" class="btn btn-primary" type="button">
-                <i class="fa-solid fa-paper-plane"></i>
-              </button>
-            </div>
+        <div class="input-group">
+          <i class="fa-solid fa-plus" id="add-icon"></i>
+          <input type="text" id="my_input" placeholder="Type a message..." required />
+          <div class="input-group-append">
+            <button id="submit_button" class="btn btn-primary" type="button">
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
           </div>
         </div>
       </div>
     </main>
+    {{slug|json_script:"room_slug"}}
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
@@ -188,6 +205,95 @@
       function BackToLanding() {
         window.location.href = "{% url 'Chat-Landing' request.user.username %}";
       }
+      const chatbox = document.querySelector("#chatbox");
+
+      function scrollToBottom() {
+        chatbox.scrollTop = chatbox.scrollHeight;
+      }
+
+      scrollToBottom();
+
+      const roomName = JSON.parse(document.getElementById("room_slug").textContent);
+      const chatSocket = new WebSocket("ws://" + window.location.host + "/ws/chat/{{room_name}}/");
+
+      chatSocket.onopen = function (e) {
+        console.log("The connection was set up successfully!");
+      };
+      chatSocket.onclose = function (e) {
+        console.log("Something unexpected happened!");
+      };
+
+      document.querySelector("#my_input").focus();
+      document.querySelector("#my_input").onkeyup = function (e) {
+        if (e.keyCode == 13) {
+          e.preventDefault();
+          document.querySelector("#submit_button").click();
+        }
+      };
+
+      document.querySelector("#submit_button").onclick = function (e) {
+        var messageInput = document.querySelector("#my_input").value;
+
+        if (messageInput.length == 0) {
+          alert("Add some input first or press the Send button!");
+        } else {
+          chatSocket.send(
+            JSON.stringify({
+              message: messageInput,
+              username: "{{ request.user.username }}",
+              room_name: "{{ room_name }}",
+            })
+          );
+          document.querySelector("#my_input").value = "";
+        }
+      };
+
+      chatSocket.onmessage = function (e) {
+        const data = JSON.parse(e.data);
+
+        if (data.message && data.sender) {
+          const chatbox = document.querySelector("#chatbox");
+          const noMessages = document.querySelector(".no-messages");
+          if (noMessages) {
+            noMessages.style.display = "none";
+          }
+
+          const div = document.createElement("div");
+          div.className =
+            "chat-message " + (data.sender === "{{ request.user.username }}" ? "sender" : "receiver");
+          div.innerHTML = `<div><span>${data.message}</span></div>`;
+          chatbox.appendChild(div);
+          scrollToBottom();
+
+          const lastMessage = document.querySelector(".list-group-item.active #last-message");
+          if (lastMessage) {
+            lastMessage.innerHTML =
+              data.sender === "{{ request.user.username }}" ? "You: " + data.message : data.message;
+
+            const timestamp = document.querySelector(".list-group-item.active small");
+            const date = new Date().toUTCString();
+            timestamp.innerHTML = date.slice(17, 22);
+
+            const chats = document.querySelectorAll(".list-group-item");
+            const chatsArray = Array.from(chats);
+            const chatsSorted = chatsArray.sort((a, b) => {
+              const aTime = a.querySelector("small").innerHTML;
+              const bTime = b.querySelector("small").innerHTML;
+              return aTime < bTime ? 1 : -1;
+            });
+
+            const contacts = document.querySelector(".contacts");
+            contacts.innerHTML = "";
+            chatsSorted.forEach((chat) => {
+              contacts.appendChild(chat);
+            });
+          } else {
+            console.error("No active chat selected");
+          }
+        } else {
+          console.error("Message or sender data is missing:", data);
+        }
+      };
     </script>
     <script src="{% static 'js/chat.js' %}"></script>
   </body>

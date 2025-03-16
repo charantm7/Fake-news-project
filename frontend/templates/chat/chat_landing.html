@@ -78,17 +78,16 @@
         <div class="chat-members">
           <div class="top">
             <p class="head-chat">CHAT</p>
-            <div class="add-chat" title="Add Friends" onclick="OpenForm()">
-              <p>Add</p>
-              <i class="fa-solid fa-plus"></i>
+            <div class="add-chat" title="Add Friends">
+              <p>Available Users</p>
             </div>
           </div>
           <div class="mid">
             <div class="member-card">
-              {% for member in chat_rooms %}
+              {% for member in users %}
               <div class="member">
                 <img src="{% static 'assets/main1.jpg' %}" alt="" />
-                <p>{{ member.user2.username }}</p>
+                <p>{{ member.username }}</p>
               </div>
               {% endfor %}
             </div>

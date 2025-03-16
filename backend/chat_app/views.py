@@ -16,45 +16,14 @@ from .models import ChatMessage
 # Create your views here.
 @login_required
 def chat_landing(request, user_name):
-    user = get_object_or_404(User, username=user_name)
-    if request.method == 'POST':
-        form = AddUserToChatForm(request.POST, request=request)
-        if form.is_valid():
-            
-            selected_user = form.cleaned_data['user2']
-
-            chat_room, created = ChatRoom.objects.get_or_create(
-                user1=request.user,
-                user2=selected_user,
-                defaults={'name': f"Chat: {request.user.username} & {selected_user.username}"}
-            )
-
-            if created:
-                messages.success(request, f"Chat created with {selected_user.username}")
-            else:
-                messages.warning(request, "Chat room already exists!")
-
-            return redirect('Chat-Landing', user_name=user_name)
-
-    else:
-        form = AddUserToChatForm(request=request)
-
-    # Fetch chats where the user is either user1 or user2
-    chat_rooms = ChatRoom.objects.filter(Q(user1=request.user) | Q(user2=request.user))
-
-    context = {
-        'form': form,
-        'chat_rooms': chat_rooms
-    }
-    return render(request, "chat/chat_landing.html", context)
+    user = User.objects.exclude(id=request.user.id)
+    
+    return render(request, "chat/chat_landing.html",{'users':user} )
     
 
 
 @login_required
 def chat(request, chat_name):
-    
-    
-
     search_query = request.GET.get('search', '') 
     users = User.objects.exclude(id=request.user.id) 
     chats = ChatMessage.objects.filter(
