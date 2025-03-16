@@ -26,12 +26,22 @@ SECRET_KEY = 'django-insecure-!)5s7lb=x3*uv0ski2_fv4*9q@7xai=c&62n&$i+hv@760&er@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'vorex']
+ASGI_APPLICATION = 'core.asgi.application'
+
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+    },
+}
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +52,8 @@ INSTALLED_APPS = [
     #user defined custom apps
     'authentication',
     'dashboard',
+    'chat_app',
+    
 
     "django_select2",
 
@@ -58,6 +70,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'core.urls'
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+    },
+}
 
 TEMPLATES = [
     {
@@ -75,10 +92,12 @@ TEMPLATES = [
     },
 ]
 
+
 STATICFILES_DIRS = [PROJECT_ROOT / "frontend/static"]
 
 
-WSGI_APPLICATION = 'core.wsgi.application'
+
+
 
 
 # Database

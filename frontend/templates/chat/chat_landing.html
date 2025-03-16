@@ -53,7 +53,7 @@
             </div>
             <div class="nav-link">
               <i class="fa-brands fa-rocketchat"></i>
-              <a href="{% url 'Chat' %}">Chat Window</a>
+              <a href="{% url 'Chat' request.user %}">Chat Window</a>
             </div>
             <div class="nav-link">
               <i class="fa-solid fa-cog"></i>
@@ -98,7 +98,7 @@
     </div>
     <script>
       function OpenChatWindow() {
-        window.location.href = "{% url 'Chat' %}";
+        window.location.href = "{% url 'Chat' request.user %}";
       }
 
       $(document).ready(function () {

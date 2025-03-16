@@ -124,26 +124,50 @@
           </div>
         </div>
       </div>
-      <div class="chat-area" data-id="{{member_name}}">
-        <div class="top">
-          {% if request.user.is_authenticated %}
-          <img src="{% static 'assets/main1.jpg'%}" alt=".." />
-          {% else %}
-          <img
-            src="https://ui-avatars.com/api/?name={{ member_name|urlencode }}&size=64&background=random"
-            style="border-radius: 50%; height: 35px; width: 35px; object-fit: cover"
-          />
+      <div class="col-9 d-flex flex-column chat" data-id="{{ room_name }}">
+        <div class="d-flex align-items-center p-1 justify-content-between">
+          <div>
+            <img
+              src="https://ui-avatars.com/api/?name={{ room_name|urlencode }}&size=64&background=random"
+              style="border-radius: 50%; height: 45px; width: auto"
+            />
+            <p class="mb-0" style="padding-left: 10px">{{ room_name }}</p>
+          </div>
+
+          <form method="GET" action="" class="p-3 ml-auto">
+            <div class="form-group mb-0">
+              <input
+                type="text"
+                name="search"
+                id="searchInput"
+                placeholder="Search messages..."
+                value="{{ search_query }}"
+              />
+            </div>
+          </form>
+        </div>
+
+        <div id="chatbox" class="chatbox flex-fill p-3">
+          {% if chats %} {% for message in chats %}
+          <div
+            class="chat-message {% if message.sender == request.user %} sender {% else %} receiver {% endif %}"
+          >
+            <span>{{ message.content }}</span>
+          </div>
+          {% endfor %} {% else %}
+          <p class="no-messages">No Messages.</p>
           {% endif %}
-          <p>Charan T M</p>
         </div>
-        <div class="mid" id="chatbox">
-          <img src="{% static 'assets/chat1-bg.jpeg'%}" alt="" />
-        </div>
-        <div class="bottom">
-          <input type="text" placeholder="Type a message" />
-          <button type="submit">
-            <i class="fa-solid fa-paper-plane"></i>
-          </button>
+
+        <div class="chat-input">
+          <div class="input-group">
+            <input type="text" id="my_input" placeholder="Type a message..." required />
+            <div class="input-group-append">
+              <button id="submit_button" class="btn btn-primary" type="button">
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </main>
@@ -165,5 +189,6 @@
         window.location.href = "{% url 'Chat-Landing' request.user.username %}";
       }
     </script>
+    <script src="{% static 'js/chat.js' %}"></script>
   </body>
 </html>
