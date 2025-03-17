@@ -7,11 +7,19 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 import os
 import random
+import requests
+import json
 from django.urls import reverse_lazy
 from chat_app.forms import AddUserToChatForm
 from .models import ChatRoom
 from django.db.models import Q
 from .models import ChatMessage
+from channels.generic.websocket import AsyncWebsocketConsumer
+from datetime import datetime
+
+
+OPENROUTER_API_KEY = "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" # our password
+OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 # Create your views here.
 @login_required
@@ -19,6 +27,22 @@ def chat_landing(request, user_name):
     user = User.objects.exclude(id=request.user.id)
     
     return render(request, "chat/chat_landing.html",{'users':user} )
+
+def analyze_message_with_mistral(message: str) -> str:
+    headers = {
+        "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+        "Content-Type": "application/json",
+        "HTTP-Referer": "http://localhost:8000",
+        "X-Title": "Fake News Detector",
+    }
+    payload = {
+        "model": "mistralai/mistral-7b-instruct:free",
+        "messages": [{"role": "user", "content": f"Analyze this message for fake news: '{message}'."}],
+    }
+    response = requests.post(OPENROUTER_API_URL, headers=headers, json=payload)
+    if response.status_code == 200:
+        return response.json()["choices"][0]["message"]["content"]
+    return f"Error: {response.status_code} - {response.text}"
     
 
 
@@ -50,8 +74,9 @@ def chat(request, chat_name):
 
     user_last_messages.sort(
     key=lambda x: (x['last_message'] is not None, x['last_message'].timestamp if x['last_message'] else 0),
-    reverse=True
-)
+    reverse=True)
+    
+
 
     return render(request, 'chat/chat.html', {
         

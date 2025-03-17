@@ -373,7 +373,7 @@ html ::-webkit-scrollbar {
 .chat-body main {
   display: flex;
   flex: 1;
-  height: 94.7vh;
+  height: 93.7vh;
   margin-top: 51px;
   margin-left: 59px;
   border-top-left-radius: 10px;

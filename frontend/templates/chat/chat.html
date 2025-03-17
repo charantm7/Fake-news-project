@@ -219,6 +219,7 @@
       chatSocket.onopen = function (e) {
         console.log("The connection was set up successfully!");
       };
+
       chatSocket.onclose = function (e) {
         console.log("Something unexpected happened!");
       };
@@ -232,26 +233,38 @@
       };
 
       document.querySelector("#submit_button").onclick = function (e) {
-        var messageInput = document.querySelector("#my_input").value;
+        const messageInput = document.querySelector("#my_input").value;
 
-        if (messageInput.length == 0) {
-          alert("Add some input first or press the Send button!");
-        } else {
+        if (messageInput.startsWith("@ai")) {
+          const messageToAnalyse = messageInput.replace("@ai", "").trim();
+          chatSocket.send(
+            JSON.stringify({
+              type: "ai_analysis",
+              content: messageToAnalyse,
+              username: "{{ request.user.username }}",
+              room_name: "{{room_name}}",
+            })
+          );
+        } else if (messageInput.length > 0) {
           chatSocket.send(
             JSON.stringify({
               message: messageInput,
               username: "{{ request.user.username }}",
+
               room_name: "{{ room_name }}",
             })
           );
-          document.querySelector("#my_input").value = "";
+        } else {
+          alert("Add some input first or press the Send button!");
         }
+
+        document.querySelector("#my_input").value = "";
       };
 
       chatSocket.onmessage = function (e) {
         const data = JSON.parse(e.data);
 
-        if (data.message && data.sender) {
+        if (data.type === "message") {
           const chatbox = document.querySelector("#chatbox");
           const noMessages = document.querySelector(".no-messages");
           if (noMessages) {
@@ -264,36 +277,20 @@
           div.innerHTML = `<div><span>${data.message}</span></div>`;
           chatbox.appendChild(div);
           scrollToBottom();
-
-          const lastMessage = document.querySelector(".list-group-item.active #last-message");
-          if (lastMessage) {
-            lastMessage.innerHTML =
-              data.sender === "{{ request.user.username }}" ? "You: " + data.message : data.message;
-
-            const timestamp = document.querySelector(".list-group-item.active small");
-            const date = new Date().toUTCString();
-            timestamp.innerHTML = date.slice(17, 22);
-
-            const chats = document.querySelectorAll(".list-group-item");
-            const chatsArray = Array.from(chats);
-            const chatsSorted = chatsArray.sort((a, b) => {
-              const aTime = a.querySelector("small").innerHTML;
-              const bTime = b.querySelector("small").innerHTML;
-              return aTime < bTime ? 1 : -1;
-            });
-
-            const contacts = document.querySelector(".contacts");
-            contacts.innerHTML = "";
-            chatsSorted.forEach((chat) => {
-              contacts.appendChild(chat);
-            });
-          } else {
-            console.error("No active chat selected");
-          }
-        } else {
-          console.error("Message or sender data is missing:", data);
+        } else if (data.type === "ai_response") {
+          const chatbox = document.querySelector("#chatbox");
+          const div = document.createElement("div");
+          div.className = "chat-message ai-response";
+          div.innerHTML = `<div><span>${data.content}</span></div>`;
+          chatbox.appendChild(div);
+          scrollToBottom();
         }
       };
+
+      function scrollToBottom() {
+        const chatbox = document.querySelector("#chatbox");
+        chatbox.scrollTop = chatbox.scrollHeight;
+      }
     </script>
     <script src="{% static 'js/chat.js' %}"></script>
   </body>
