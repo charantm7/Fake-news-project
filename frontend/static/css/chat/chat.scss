@@ -604,6 +604,32 @@ html {
           border: 1px solid var(--border1);
           z-index: 9999;
         }
+        .ai-response {
+          background-color: #f9f9f9;
+          border-left: 4px solid #007bff;
+          padding: 15px;
+          margin: 10px 0;
+          border-radius: 5px;
+        }
+
+        .ai-response h3 {
+          margin-top: 0;
+          color: #007bff;
+        }
+
+        .ai-response p {
+          margin: 10px 0;
+          line-height: 1.6;
+        }
+
+        .ai-response ul {
+          margin: 10px 0;
+          padding-left: 20px;
+        }
+
+        .ai-response li {
+          margin-bottom: 5px;
+        }
 
         .chat-message.sender {
           background-color: #005d4b;

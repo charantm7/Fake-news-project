@@ -106,3 +106,7 @@ def search_users(request):
         results = []
 
     return JsonResponse({"results": results}) 
+
+
+
+

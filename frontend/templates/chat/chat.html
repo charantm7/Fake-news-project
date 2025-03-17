@@ -264,7 +264,7 @@
       chatSocket.onmessage = function (e) {
         const data = JSON.parse(e.data);
 
-        if (data.type === "message") {
+        if (data.message && data.sender) {
           const chatbox = document.querySelector("#chatbox");
           const noMessages = document.querySelector(".no-messages");
           if (noMessages) {
@@ -277,13 +277,41 @@
           div.innerHTML = `<div><span>${data.message}</span></div>`;
           chatbox.appendChild(div);
           scrollToBottom();
+
+          const lastMessage = document.querySelector(".list-group-item.active #last-message");
+          if (lastMessage) {
+            lastMessage.innerHTML =
+              data.sender === "{{ request.user.username }}" ? "You: " + data.message : data.message;
+
+            const timestamp = document.querySelector(".list-group-item.active small");
+            const date = new Date().toUTCString();
+            timestamp.innerHTML = date.slice(17, 22);
+
+            const chats = document.querySelectorAll(".list-group-item");
+            const chatsArray = Array.from(chats);
+            const chatsSorted = chatsArray.sort((a, b) => {
+              const aTime = a.querySelector("small").innerHTML;
+              const bTime = b.querySelector("small").innerHTML;
+              return aTime < bTime ? 1 : -1;
+            });
+
+            const contacts = document.querySelector(".contacts");
+            contacts.innerHTML = "";
+            chatsSorted.forEach((chat) => {
+              contacts.appendChild(chat);
+            });
+          } else {
+            console.error("No active chat selected");
+          }
         } else if (data.type === "ai_response") {
           const chatbox = document.querySelector("#chatbox");
           const div = document.createElement("div");
           div.className = "chat-message ai-response";
-          div.innerHTML = `<div><span>${data.content}</span></div>`;
+          div.innerHTML = data.content; // Render the AI's response as HTML
           chatbox.appendChild(div);
           scrollToBottom();
+        } else {
+          console.error("Message or sender data is missing:", data);
         }
       };
 

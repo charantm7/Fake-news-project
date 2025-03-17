@@ -549,6 +549,28 @@ html ::-webkit-scrollbar {
   border: 1px solid var(--border1);
   z-index: 9999;
 }
+.chat-body main .chat .chatbox .ai-response {
+  background-color: #f9f9f9;
+  border-left: 4px solid #007bff;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+.chat-body main .chat .chatbox .ai-response h3 {
+  margin-top: 0;
+  color: #007bff;
+}
+.chat-body main .chat .chatbox .ai-response p {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+.chat-body main .chat .chatbox .ai-response ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+.chat-body main .chat .chatbox .ai-response li {
+  margin-bottom: 5px;
+}
 .chat-body main .chat .chatbox .chat-message.sender {
   background-color: #005d4b;
   color: var(--text);
