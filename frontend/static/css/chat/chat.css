@@ -550,7 +550,7 @@ html ::-webkit-scrollbar {
   z-index: 9999;
 }
 .chat-body main .chat .chatbox .ai-response {
-  background-color: #f9f9f9;
+  background-color: transparent;
   border-left: 4px solid #007bff;
   padding: 15px;
   margin: 10px 0;
