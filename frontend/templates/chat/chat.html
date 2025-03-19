@@ -213,6 +213,8 @@
 
       scrollToBottom();
 
+      // websockets for chat
+
       const roomName = JSON.parse(document.getElementById("room_slug").textContent);
       const chatSocket = new WebSocket("ws://" + window.location.host + "/ws/chat/{{room_name}}/");
 
@@ -224,6 +226,7 @@
         console.log("Something unexpected happened!");
       };
 
+      // key events
       document.querySelector("#my_input").focus();
       document.querySelector("#my_input").onkeyup = function (e) {
         if (e.keyCode == 13) {
@@ -232,6 +235,7 @@
         }
       };
 
+      //  send message to the server
       document.querySelector("#submit_button").onclick = function (e) {
         const messageInput = document.querySelector("#my_input").value;
 
@@ -250,7 +254,7 @@
             JSON.stringify({
               message: messageInput,
               username: "{{ request.user.username }}",
-
+              type: "NormalMessage",
               room_name: "{{ room_name }}",
             })
           );
@@ -261,6 +265,7 @@
         document.querySelector("#my_input").value = "";
       };
 
+      // recieve the message
       chatSocket.onmessage = function (e) {
         const data = JSON.parse(e.data);
 

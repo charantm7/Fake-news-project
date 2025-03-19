@@ -18,7 +18,7 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 from datetime import datetime
 
 
-OPENROUTER_API_KEY = "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" # our password
+OPENROUTER_API_KEY = "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" 
 OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 # Create your views here.
