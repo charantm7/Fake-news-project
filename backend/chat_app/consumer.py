@@ -264,7 +264,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 "action": "send_warning",
                 "score": "<calculated_score>",
                 "fake_probability": "<calculated_fake_probability_percentage>%",
-                "warning_message": "⚠️ This message appears to be potentially fake with a credibility score of <calculated_score> and a fake probability of <calculated_fake_probability_percentage>%. Please verify this information before believing or sharing it."
+                "warning_message": "⚠️ This message appears to be potentially fake with a credibility score of <calculated_score> and a fake probability of <calculated_fake_probability_percentage>%. Please verify this information before believing or sharing through it."
                 }}
 
                 Note: If the score is <= 0.3, the fake probability is 95%.
