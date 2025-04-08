@@ -9,7 +9,7 @@ import aiohttp
 
 #5ZppSTNxyZcQqCuA5qWH2SZwHFI0gRcg
 # Load API key from environment variables
-OPENROUTER_API_KEY = "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" # our password
+OPENROUTER_API_KEY = "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" # our password
 OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 class ChatConsumer(AsyncWebsocketConsumer):
@@ -221,9 +221,13 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 async with session.post(OPENROUTER_API_URL, headers=headers, json=payload) as response:
                     if response.status == 200:
                         data = await response.json()
-                        ai_response = data["choices"][0]["message"]["content"]
-                        formatted_response = format_ai_response(ai_response)
-                        return formatted_response
+
+                        try:
+                            ai_text = data["choices"][0]["message"]["content"]
+                        except (KeyError, IndexError):
+                            return json.dumps({"action": "error", "message": "Invalid AI response format", "raw": str(data)})
+
+                        return ai_text
                     return f"Error: {response.status} - {await response.text()}"
             except Exception as e:
                 return f"Error analyzing message: {str(e)}"
@@ -282,8 +286,13 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 async with session.post(OPENROUTER_API_URL, headers=headers, json=payload) as response:
                     if response.status == 200:
                         data = await response.json()
-                        normal_ai_response = data["choices"][0]["message"]["content"]
-                        return normal_ai_response
+
+                        try:
+                            ai_text = data["choices"][0]["message"]["content"]
+                        except (KeyError, IndexError):
+                            return json.dumps({"action": "error", "message": "Invalid AI response format", "raw": str(data)})
+
+                        return ai_text
                     return f"Error: {response.status} - {await response.text()}"
             except Exception as e:
                 return f"Error analyzing message: {str(e)}"

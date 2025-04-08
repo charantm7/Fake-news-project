@@ -8,3 +8,7 @@ openai
 websockets 
 django 
 channels
+daphne
+requests
+aiohttp
+pydantic

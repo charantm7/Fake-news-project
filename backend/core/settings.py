@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-!)5s7lb=x3*uv0ski2_fv4*9q@7xai=c&62n&$i+hv@760&er@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'vorex']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 ASGI_APPLICATION = 'core.asgi.application'
 
 
@@ -51,7 +51,7 @@ INSTALLED_APPS = [
 
     #user defined custom apps
     'authentication',
-    'dashboard',
+    'dashboard',    
     'chat_app',
     
 
